@@ -1,0 +1,49 @@
+package sec02;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+//get방식 주소
+//http://localhost:9090/input3?u_name=홍길동&u_id=asy&u_pw=1234&u_addr=노원구&u_tel=010-0000-0000&u_age=28
+							//? 뒤쪽부터, 'u_name~'부분을 QueryString(쿼리스트링) 라고 한다. / 구분자는 &로 되어 있다. /
+@WebServlet("/input3")
+public class InputServlet3 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public InputServlet3() {
+        super();
+    }
+    
+    @Override
+	public void init() throws ServletException {
+		System.out.println("init");
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		//한글 깨짐 방지
+		//request.setCharacterEncoding("utf-8");
+		//get 방식은 한글깨짐 방지를 안해도 된다. 
+		
+		String name = request.getParameter("u_name");
+		String id = request.getParameter("u_id");
+		String pass = request.getParameter("u_pw");
+		String addr = request.getParameter("u_addr");
+		String tel = request.getParameter("u_tel");
+		
+		//나이를 숫자(정수)로 변환작업
+		int age = Integer.parseInt(request.getParameter("u_age"));
+		
+		System.out.println("이름은?" + name); 
+		System.out.println("아이디는?" + id); 
+		System.out.println("비밀번호는?" + pass); 
+		System.out.println("주소는?" + addr); 
+		System.out.println("연락처는?" + tel); 
+		System.out.println("나이는?" + age); 
+	}
+
+}
