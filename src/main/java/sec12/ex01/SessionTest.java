@@ -1,0 +1,38 @@
+package sec12.ex01;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+// 요청주소 http://아이피:9090/sess
+@WebServlet("/sess")
+public class SessionTest extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public SessionTest() {
+        super();
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("name","이순신");
+		
+		out.println("<html><body>");
+		out.println("<h1>세션의 이름을 바인딩 합니다.</h1>");
+		out.println("<a href='/sec12/test01/session1.jsp'>첫번째 페이지로 이동하기</a>");
+		out.println("</body></html>");
+		
+		
+	}
+
+}

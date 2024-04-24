@@ -40,7 +40,8 @@ public class SetCookieValue extends HttpServlet {
 		
 		Cookie cookie = new Cookie("cookieTest", URLEncoder.encode("JSP프로그래밍입니다.", "utf-8"));
 		cookie.setMaxAge(1 * 24 * 60 * 60); //1일에 대한 초시간
-	
+											//0이나 음수값을 넣으면 유지시간이 0이 된 것이므로 삭제된다.
+		
 		// 이 작업을 하면, 클라이언트(브라우저)에게 쿠키정보가 전송된다. 얘는 response 객체로 알아서 나간다.
 		response.addCookie(cookie); 
 		
