@@ -31,7 +31,7 @@ public class Sec08Ex01FirstServlet extends HttpServlet {
  		// 헤더를 클라이언트의 브라우저가 읽고, 브라우저의 내용을 새로고침 하는데 10초 후 다음 url 주소로 새로고침 하겠다.
  		//방법1) n초 후 새로고침으로 이동 
  		// 결과 : 브라우저 주소가 변경된다/변경주소가 클라이언트로 보내지고 해석되어 진행된다.
- 		response.addHeader("Refresh","10;url=/Sec08Ex01SecondServlet");
+ 		response.addHeader("Refresh","5;url=/Sec08Ex01SecondServlet");
  			        //Refresh는 예약어 (새로고침 하겠다.) 
 		
 	}
